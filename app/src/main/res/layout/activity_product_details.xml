@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".mvp.home.view.activity.ProductDetailsActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.youth.banner.Banner
+            android:id="@+id/product_banner"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_marginTop="100sp"></com.youth.banner.Banner>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_marginTop="35dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/product_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="商品标题" />
+
+
+        <TextView
+            android:id="@+id/product_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="商品简介"
+            android:layout_below="@id/product_title"
+            />
+
+        <TextView
+            android:id="@+id/product_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="￥0.0"
+            android:textColor="#ff5656"
+            android:layout_below="@id/product_content"
+            />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="150dp"
+
+        >
+
+        <Button
+            android:id="@+id/add_cart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="200dp"
+            android:background="#ff6622"
+            android:text="加入购物车"
+            android:textColor="#fff" />
+
+        <Button
+            android:id="@+id/go_buy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:background="#ff6622"
+            android:text="立即购买"
+            android:textColor="#fff" />
+    </RelativeLayout>
+
+</LinearLayout>
