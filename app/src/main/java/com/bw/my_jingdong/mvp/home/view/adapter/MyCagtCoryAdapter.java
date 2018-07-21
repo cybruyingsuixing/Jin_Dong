@@ -20,6 +20,7 @@ public class MyCagtCoryAdapter extends RecyclerView.Adapter<MyCagtCoryAdapter.My
     private List<CatagoryBean.DataBean> list;
 
     private static final String TAG = "MyCagtCoryAdapter*****";
+
     public MyCagtCoryAdapter(List<CatagoryBean.DataBean> list) {
         this.list = list;
     }
@@ -33,20 +34,28 @@ public class MyCagtCoryAdapter extends RecyclerView.Adapter<MyCagtCoryAdapter.My
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyHolder holder, int position) {
-        Log.e(TAG, "onBindViewHolder: "+ list.get(position).getName() );
+    public void onBindViewHolder(@NonNull MyHolder holder, final int position) {
+        Log.e(TAG, "onBindViewHolder: " + list.get(position).getName());
         String icon = list.get(position).getIcon();
-
         Uri uri = Uri.parse(icon);
-         holder.img.setImageURI(uri);
-       holder.tv_text.setText(list.get(position).getName());
+        holder.img.setImageURI(uri);
+        holder.tv_text.setText(list.get(position).getName());
+        final int cid = list.get(position).getCid();
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (onClickListener!=null){
+                    onClickListener.onClick(cid);
+                }
+            }
+        });
 
     }
 
     @Override
     public int getItemCount() {
-        Log.d(TAG, "getItemCount: "+list.size());
-        Log.e(TAG, "onBindViewHolder: "+ list.get(0).getName() );
+        Log.d(TAG, "getItemCount: " + list.size());
+        Log.e(TAG, "onBindViewHolder: " + list.get(0).getName());
         return list.size();
     }
 
@@ -61,5 +70,15 @@ public class MyCagtCoryAdapter extends RecyclerView.Adapter<MyCagtCoryAdapter.My
             img = itemView.findViewById(R.id.cagtcory_img);
             tv_text = itemView.findViewById(R.id.cartcory_tv);
         }
+    }
+
+    onClickListener onClickListener;
+
+    public void setOnClickListener(MyCagtCoryAdapter.onClickListener onClickListener) {
+        this.onClickListener = onClickListener;
+    }
+
+    public interface onClickListener {
+        void onClick(int cid);
     }
 }

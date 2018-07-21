@@ -10,6 +10,7 @@ import com.bw.my_jingdong.R;
 import com.bw.my_jingdong.adapter.MyFragmentAdapter;
 import com.bw.my_jingdong.mvp.cart.view.fragment.CartFragment;
 import com.bw.my_jingdong.mvp.classes.view.fragment.ClassesFragment;
+import com.bw.my_jingdong.mvp.find.view.fragment.FindFragment;
 import com.bw.my_jingdong.mvp.home.view.fragment.HomeFragment;
 import com.bw.my_jingdong.mvp.my.view.fragment.MyFragment;
 
@@ -20,7 +21,8 @@ public class ShowActivity extends AppCompatActivity {
 
     private ViewPager viewPager;
     private RadioGroup radio;
-   private List<Fragment> list=new ArrayList<>();
+    private List<Fragment> list = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,9 +37,9 @@ public class ShowActivity extends AppCompatActivity {
         radio.check(R.id.show_home);
         list.add(new HomeFragment());
         list.add(new ClassesFragment());
+        list.add(new FindFragment());
         list.add(new CartFragment());
         list.add(new MyFragment());
-
         MyFragmentAdapter adapter = new MyFragmentAdapter(getSupportFragmentManager(), list);
         viewPager.setAdapter(adapter);
         viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -48,17 +50,20 @@ public class ShowActivity extends AppCompatActivity {
 
             @Override
             public void onPageSelected(int position) {
-                switch (position){
+                switch (position) {
                     case 0:
                         radio.check(R.id.show_home);
                         break;
                     case 1:
                         radio.check(R.id.show_classes);
                         break;
-                        case 2:
-                        radio.check(R.id.show_cart);
+                    case 2:
+                        radio.check(R.id.show_find);
                         break;
                     case 3:
+                        radio.check(R.id.show_cart);
+                        break;
+                    case 4:
                         radio.check(R.id.show_my);
                         break;
                 }
@@ -73,18 +78,22 @@ public class ShowActivity extends AppCompatActivity {
         radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                switch (checkedId){
+                switch (checkedId) {
                     case R.id.show_home:
                         viewPager.setCurrentItem(0);
                         break;
                     case R.id.show_classes:
                         viewPager.setCurrentItem(1);
                         break;
-                    case R.id.show_cart:
+
+                    case R.id.show_find:
                         viewPager.setCurrentItem(2);
                         break;
-                    case R.id.show_my:
+                    case R.id.show_cart:
                         viewPager.setCurrentItem(3);
+                        break;
+                    case R.id.show_my:
+                        viewPager.setCurrentItem(4);
                         break;
                 }
             }

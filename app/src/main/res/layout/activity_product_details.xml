@@ -3,34 +3,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".mvp.home.view.activity.ProductDetailsActivity">
+  >
 
+  <com.youth.banner.Banner
+        android:id="@+id/product_banner"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        ></com.youth.banner.Banner>
 
     <LinearLayout
+        android:layout_marginTop="100sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <com.youth.banner.Banner
-            android:id="@+id/product_banner"
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:layout_marginTop="100sp"></com.youth.banner.Banner>
-
-    </LinearLayout>
-
-    <RelativeLayout
-        android:layout_marginTop="35dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:orientation="vertical"
+        >
 
         <TextView
             android:id="@+id/product_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="商品标题" />
+            android:text="商品标题"
+            android:textSize="30dp"
+            />
 
 
         <TextView
@@ -38,6 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="商品简介"
+            android:textSize="20dp"
             android:layout_below="@id/product_title"
             />
 
@@ -46,37 +43,65 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="￥0.0"
+            android:textSize="15dp"
             android:textColor="#ff5656"
             android:layout_below="@id/product_content"
             />
 
-    </RelativeLayout>
+    </LinearLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="150dp"
-
+        android:layout_height="wrap_content"
         >
+
+
+        <Button
+            android:id="@+id/shangjia"
+            android:layout_width="20dp"
+            android:layout_height="30dp"
+            android:background="@drawable/shangpud"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="20dp"
+
+            />
+
+        <Button
+            android:id="@+id/kefu"
+            android:layout_width="20dp"
+            android:layout_height="30dp"
+            android:background="@drawable/kf"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="60dp"
+            />
+
+        <Button
+            android:id="@+id/cart_tiao"
+           android:layout_width="40dp"
+           android:layout_height="35dp"
+           android:background="@drawable/abu"
+           android:layout_marginLeft="100sp"
+           android:layout_alignParentBottom="true"
+           />
 
         <Button
             android:id="@+id/add_cart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginLeft="200dp"
             android:background="#ff6622"
             android:text="加入购物车"
+            android:layout_marginLeft="200dp"
+            android:layout_alignParentBottom="true"
             android:textColor="#fff" />
 
         <Button
             android:id="@+id/go_buy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
             android:background="#ff6622"
             android:text="立即购买"
+            android:layout_marginLeft="300dp"
+            android:layout_alignParentBottom="true"
             android:textColor="#fff" />
     </RelativeLayout>
 

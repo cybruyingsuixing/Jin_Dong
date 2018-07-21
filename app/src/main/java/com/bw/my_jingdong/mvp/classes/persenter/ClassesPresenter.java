@@ -1,7 +1,7 @@
 package com.bw.my_jingdong.mvp.classes.persenter;
 
 import com.bw.my_jingdong.base.BasePresenter;
-import com.bw.my_jingdong.mvp.classes.model.ClassesModel;
+import com.bw.my_jingdong.mvp.classes.model.classesmodel.ClassesModel;
 import com.bw.my_jingdong.mvp.classes.model.bean.ClassesBeanLeft;
 import com.bw.my_jingdong.mvp.classes.model.bean.ClassesBeanRight;
 import com.bw.my_jingdong.mvp.classes.view.view.ClassesView;
@@ -57,9 +57,6 @@ public class ClassesPresenter extends BasePresenter<ClassesView> {
                 });
     }
 
-
-
-
     public void getRightGoods(int cid){
         classesModel.getRight(cid)
                 .subscribeOn(Schedulers.io())
@@ -90,5 +87,8 @@ public class ClassesPresenter extends BasePresenter<ClassesView> {
                     }
                 });
     }
+
+
+
 
 }

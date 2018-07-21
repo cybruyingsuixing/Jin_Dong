@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import org.greenrobot.eventbus.EventBus;
+
 public abstract class BaseFragment <P extends BasePresenter> extends Fragment{
     protected  P presenter;
     private View view;
@@ -17,6 +19,7 @@ public abstract class BaseFragment <P extends BasePresenter> extends Fragment{
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(provId(),null);
           presenter=provide();
+
         return view;
     }
 
@@ -60,5 +63,6 @@ public abstract class BaseFragment <P extends BasePresenter> extends Fragment{
     public void onDestroy() {
         super.onDestroy();
         presenter.onDestory();
+
     }
 }

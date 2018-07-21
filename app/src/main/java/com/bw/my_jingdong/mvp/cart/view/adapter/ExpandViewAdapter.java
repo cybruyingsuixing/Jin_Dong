@@ -4,6 +4,7 @@ import android.net.Uri;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -105,7 +106,7 @@ public class ExpandViewAdapter extends BaseExpandableListAdapter {
         }
         //赋值子类名称
         childHolder.productTitleNameTv.setText(listBean.getTitle());
-        childHolder.childPrice.setText(listBean.getPrice() + "");
+        childHolder.childPrice.setText(listBean.getBargainPrice() + "");
         String[] pic = listBean.getImages().split("\\|");
         Uri uri = Uri.parse(pic[0]);
         childHolder.productImg.setImageURI(uri);
@@ -138,6 +139,15 @@ public class ExpandViewAdapter extends BaseExpandableListAdapter {
                 }
             }
 
+        });
+
+        childHolder.cartChildRemove.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (onCartListChangeListener != null) {
+                    onCartListChangeListener.onRemoveCartListener(groupPosition, childPosition);
+                }
+            }
         });
 
         return convertView;
@@ -209,7 +219,7 @@ public class ExpandViewAdapter extends BaseExpandableListAdapter {
             List<CartBean.DataBean.ListBean> list = seller.get(i).getList();
             for (int j = 0; j < list.size(); j++) {
                 if (list.get(j).getSelected() == 1) {
-                    float price = list.get(j).getPrice();
+                    float price = list.get(j).getBargainPrice();
                     int num = list.get(j).getNum();
                     totlaPrice += num * price;
                 }
@@ -271,6 +281,8 @@ public class ExpandViewAdapter extends BaseExpandableListAdapter {
         void onProductCheckedChange(int groupPosition, int childPosition);
 
         void onProductNumberChange(int groupPosition, int childPosition, int number);
+
+        void onRemoveCartListener(int groupPosition, int childPosition);
     }
 
 
@@ -285,9 +297,13 @@ public class ExpandViewAdapter extends BaseExpandableListAdapter {
         TextView childPrice;
         @BindView(R.id.my_sub_add)
         MyAddSub mySubAdd;
+        @BindView(R.id.cart_child_remove)
+        Button cartChildRemove;
 
         ChildHolder(View view) {
             ButterKnife.bind(this, view);
         }
     }
+
+
 }

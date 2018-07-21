@@ -2,8 +2,13 @@ package com.bw.my_jingdong.mvp.home.view.fragment;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -14,13 +19,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.bw.my_jingdong.R;
 import com.bw.my_jingdong.base.BaseFragment;
+import com.bw.my_jingdong.mvp.cart.model.bean.CreateOrderBean;
+import com.bw.my_jingdong.mvp.classes.view.activity.SearchActivity;
 import com.bw.my_jingdong.mvp.home.model.bean.AddCartBean;
 import com.bw.my_jingdong.mvp.home.model.bean.CatagoryBean;
 import com.bw.my_jingdong.mvp.home.model.bean.HomeBean;
 import com.bw.my_jingdong.mvp.home.model.bean.ProductDetailsBean;
+import com.bw.my_jingdong.mvp.home.model.bean.SpikBean;
 import com.bw.my_jingdong.mvp.home.presenter.HomePresenter;
 import com.bw.my_jingdong.mvp.home.view.activity.ProductDetailsActivity;
 import com.bw.my_jingdong.mvp.home.view.adapter.MyCagtCoryAdapter;
@@ -41,6 +50,8 @@ import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.loader.ImageLoader;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -58,10 +69,13 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeVie
     private MyGoodsAdapter myGoodsAdapter;
     private MarqueeView marqueeView;
     private MySplickAdapter mySplickAdapter;
+    private MyCagtCoryAdapter myCagtCoryAdapter;
+
 
     //获取id
     @Override
     protected void initViews(View view) {
+
         //轮播图
         banner = view.findViewById(R.id.home_banner);
         //二维码
@@ -78,7 +92,9 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeVie
         recyclerView_goods = view.findViewById(R.id.home_recyler_goods);
         refreshLayout = view.findViewById(R.id.refreshLayout);
         btn_sao.setOnClickListener(this);
+        editText.setOnClickListener(this);
         marqueeView = view.findViewById(R.id.marqueeView);
+
         List<String> info = new ArrayList<>();
         info.add("京东购物狂欢");
         info.add("服装秀");
@@ -158,7 +174,10 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeVie
         mySplickAdapter.setOnClickListener(new MyGoodsAdapter.onClickListener() {
             @Override
             public void onClick(View view, int position) {
-
+                int pid = homeBean.getMiaosha().getList().get(position).getPid();
+                Intent intent = new Intent(getActivity(),ProductDetailsActivity.class);
+                intent.putExtra("pid",pid);
+                startActivityForResult(intent,100);
             }
         });
 
@@ -175,9 +194,7 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeVie
         myGoodsAdapter.setOnClickListener(new MyGoodsAdapter.onClickListener() {
             @Override
             public void onClick(View view, int position) {
-                //int pid = tuijian.getList().get(position).getPid();
                 int pid = homeBean.getTuijian().getList().get(position).getPid();
-                Log.e("tag", "onClick:+++++++++ "+pid );
                 Intent intent = new Intent(getActivity(),ProductDetailsActivity.class);
                 intent.putExtra("pid",pid);
 
@@ -199,6 +216,11 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeVie
                Intent intent = new Intent(getContext(), CaptureActivity.class);
                startActivityForResult(intent,0);
                break;
+           case R.id.home_ed_text:
+               Intent it= new Intent(getContext(), SearchActivity.class);
+               startActivity(it);
+               break;
+
        }
     }
 
@@ -215,7 +237,6 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeVie
         }
     }
 
-
     @Override
     public void onFaild(String error) {
 
@@ -230,9 +251,28 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeVie
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
         gridLayoutManager.setOrientation(GridLayoutManager.HORIZONTAL);
         xRecyclerView_show.setLayoutManager(gridLayoutManager);
-        MyCagtCoryAdapter myCagtCoryAdapter = new MyCagtCoryAdapter(data);
+        myCagtCoryAdapter = new MyCagtCoryAdapter(data);
         xRecyclerView_show.setAdapter(myCagtCoryAdapter);
+
+        myCagtCoryAdapter.setOnClickListener(new MyCagtCoryAdapter.onClickListener() {
+            @Override
+            public void onClick( int position) {
+
+                /*SharedPreferences goods = getActivity().getSharedPreferences("gs", Context.MODE_PRIVATE);
+                SharedPreferences.Editor edit = goods.edit();
+                edit.putInt("cid", position);
+                edit.commit();*/
+                ViewPager viewPager=getActivity().findViewById(R.id.show_viewpager);
+                viewPager.setCurrentItem(1);
+                //Toast.makeText(getActivity(),"---",Toast.LENGTH_SHORT).show();
+
+                //EventBus.getDefault().post(position);
+            }
+        });
     }
+
+
+
 
     @Override
     public void onFailds(String error) {
@@ -256,6 +296,27 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeVie
 
     @Override
     public void onAddCartFaild(String error) {
+
+    }
+
+    @Override
+    public void onSpikSuccess(SpikBean spikBean) {
+
+    }
+
+    @Override
+    public void onSpikFaild(String error) {
+
+    }
+
+    //点击立即购买
+    @Override
+    public void onBuySuccess(CreateOrderBean createOrderBean) {
+
+    }
+
+    @Override
+    public void onBuyFaild(String error) {
 
     }
 

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    >
+<com.facebook.drawee.view.SimpleDraweeView
+    android:id="@+id/find_item2_img"
+    android:layout_width="300dp"
+    android:layout_height="100sp"
+    android:background="@mipmap/ic_launcher"
+    />
+
+    <TextView
+        android:id="@+id/find_item2_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="我嫩子"
+        />
+</LinearLayout>

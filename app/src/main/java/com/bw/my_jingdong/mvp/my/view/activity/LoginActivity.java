@@ -28,6 +28,7 @@ public class LoginActivity extends BaseActivity<MyLoginPresenter> implements MyL
     private Button btn_login;
     private TextView tv_reg;
     private static final String TAG = "LoginActivity";
+
     @Override
     protected void initListener() {
 
@@ -48,7 +49,7 @@ public class LoginActivity extends BaseActivity<MyLoginPresenter> implements MyL
         tv_reg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent it = new Intent(LoginActivity.this,RegActivity.class);
+                Intent it = new Intent(LoginActivity.this, RegActivity.class);
                 startActivity(it);
             }
         });
@@ -81,26 +82,23 @@ public class LoginActivity extends BaseActivity<MyLoginPresenter> implements MyL
             public void run() {
 
                 Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
-
-                if (loginBean.getCode().equals("0")){
-                    Intent it = new Intent(LoginActivity.this, MyFragment.class);
-                    //传值
-                    it.putExtra("mobile",loginBean.getData().getMobile());
-                    it.putExtra("image",loginBean.getData().getIcon());
-                    setResult(100,it);
-                    finish();
-                    //Intent it = new Intent(LoginActivity.this, MyFragment.class);
-                    SharedPreferences mobile = LoginActivity.this.getSharedPreferences("mobile", MODE_PRIVATE);
-
-                    SharedPreferences.Editor edit = mobile.edit();
-                    edit.putString("name",loginBean.getData().getMobile());
-                    edit.commit();
-                    finish();
-                }
-
+                LoginBean.DataBean data = loginBean.getData();
+                String mobile1 = data.getMobile();
+                String icon1 = data.getIcon();
+                int uid = data.getUid();
+                Log.e("密码和头像", "eee" + mobile1 + icon1);
+                SharedPreferences p = LoginActivity.this.getSharedPreferences("mobile", MODE_PRIVATE);
+                SharedPreferences.Editor edit = p.edit();
+                edit.putString("name", mobile1);
+                edit.putString("icon", icon1);
+                edit.putBoolean("flag", true);
+                edit.putInt("uid", uid);
+                edit.commit();
+                finish();
             }
         });
     }
+
     @Override
     public void onFaild(final String error) {
 

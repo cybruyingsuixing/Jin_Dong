@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,50 +20,89 @@ import android.widget.Toast;
 
 import com.bw.my_jingdong.R;
 import com.bw.my_jingdong.base.BaseFragment;
+import com.bw.my_jingdong.mvp.cart.view.activity.QueryOrderActivity;
 import com.bw.my_jingdong.mvp.my.view.activity.LoginActivity;
+import com.bw.my_jingdong.mvp.my.view.activity.MyCenterActivity;
 import com.facebook.drawee.view.SimpleDraweeView;
 
-public class MyFragment extends Fragment implements View.OnClickListener{
+import static android.content.Context.MODE_PRIVATE;
+
+public class MyFragment extends Fragment implements View.OnClickListener {
 
     private SimpleDraweeView my_tiao;
-    private TextView textView;
+    private TextView my_center;
+    private String icon;
+    private String name;
+    private TextView tv_orde;
+    private ImageView order_img;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.myfragment, null);
         my_tiao = view.findViewById(R.id.my_tiao);
-        textView = view.findViewById(R.id.my_text);
         my_tiao.setOnClickListener(this);
-        SharedPreferences mobile = getActivity().getSharedPreferences("mobile", Context.MODE_PRIVATE);
-        String name = mobile.getString("name", "");
-        textView.setText(name);
+        my_center = view.findViewById(R.id.my_text);
+        my_center.setOnClickListener(this);
+        tv_orde = view.findViewById(R.id.my_order);
+        tv_orde.setOnClickListener(this);
+        order_img = view.findViewById(R.id.my_order_img);
+        order_img.setOnClickListener(this);
+
+
         return view;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        SharedPreferences mobile = getActivity().getSharedPreferences("mobile", MODE_PRIVATE);
+        boolean flag = mobile.getBoolean("flag", false);
+        if (flag) {
+            SharedPreferences.Editor edit = mobile.edit();
+            name = mobile.getString("name", "");
+            icon = mobile.getString("icon", null);
+            my_center.setText(name);
+            my_tiao.setImageURI(icon);
+        }
+    }
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.my_tiao:
-               // Toast.makeText(getContext(),"调走了",Toast.LENGTH_SHORT).show();
-                Intent it = new Intent(getContext(),LoginActivity.class);
-                startActivityForResult(it,100);
+                SharedPreferences mobile = getActivity().getSharedPreferences("mobile", MODE_PRIVATE);
+                int uid = mobile.getInt("uid", 0);
+                if (uid==0) {
+                    Intent it = new Intent(getContext(), LoginActivity.class);
+                    startActivityForResult(it, 100);
+                } else {
+                    Intent intent = new Intent(getContext(), MyCenterActivity.class);
+                    startActivityForResult(intent, 500);
+                }
+                break;
+            case R.id.my_text:
+                Intent intent = new Intent(getContext(), MyCenterActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.my_order:
+                Intent in = new Intent(getContext(), QueryOrderActivity.class);
+                startActivity(in);
+                break;
+            case R.id.my_order_img:
+                Intent intn = new Intent(getContext(), QueryOrderActivity.class);
+                startActivity(intn);
                 break;
         }
     }
 
-   @Override
+    @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode==100&&resultCode==100){
-            String mobile = data.getStringExtra("mobile");
-            String image = data.getStringExtra("image");
-            Log.d("tag", "onActivityResult: "+image);
-            Log.d("tag", "onActivityResult: "+mobile);
-            textView.setText(mobile);
-            Uri uri = Uri.parse(image);
-            my_tiao.setImageURI(uri);
+        if (requestCode == 500 && resultCode == 500) {
+            my_tiao.setImageURI("");
+            my_center.setText("个人中心");
+            icon = null;
         }
     }
 }

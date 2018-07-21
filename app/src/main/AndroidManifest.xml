@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:name=".app.MyApp"
@@ -24,7 +25,14 @@
         <activity android:name=".activity.ShowActivity" />
         <activity android:name=".mvp.my.view.activity.LoginActivity" />
         <activity android:name=".mvp.my.view.activity.RegActivity" />
-        <activity android:name=".mvp.home.view.activity.ProductDetailsActivity"></activity>
+        <activity android:name=".mvp.home.view.activity.ProductDetailsActivity" />
+        <activity android:name=".mvp.classes.view.activity.SearchActivity" />
+        <activity android:name=".mvp.classes.view.activity.ShowSuccessActivity" />
+        <activity android:name=".mvp.classes.view.activity.ClssesProducts" />
+        <activity android:name=".mvp.my.view.activity.MyCenterActivity" />
+        <activity android:name=".mvp.find.view.activity.WelcomActivity" />
+        <activity android:name=".mvp.cart.view.activity.QueryOrderActivity" />
+        <activity android:name=".mvp.cart.view.activity.AddRessActivity"></activity>
     </application>
 
 </manifest>

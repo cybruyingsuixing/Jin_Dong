@@ -13,7 +13,7 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/home_btn_sao"
+            android:id="@+id/classes_btn_sao"
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_gravity="center_vertical"
@@ -23,7 +23,7 @@
 
 
         <EditText
-            android:id="@+id/home_ed_text"
+            android:id="@+id/classes_ed_text"
             android:layout_width="0dp"
             android:layout_height="30dp"
             android:layout_centerVertical="true"
@@ -33,7 +33,7 @@
             android:hint="  618京东购物狂欢" />
 
         <Button
-            android:id="@+id/home_btn_msg"
+            android:id="@+id/classes_btn_msg"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_gravity="center_vertical"

@@ -1,11 +1,13 @@
 package com.bw.my_jingdong.mvp.home.presenter;
 
 import com.bw.my_jingdong.base.BasePresenter;
-import com.bw.my_jingdong.mvp.home.model.HomeModel;
+import com.bw.my_jingdong.mvp.cart.model.bean.CreateOrderBean;
+import com.bw.my_jingdong.mvp.home.model.homemodel.HomeModel;
 import com.bw.my_jingdong.mvp.home.model.bean.AddCartBean;
 import com.bw.my_jingdong.mvp.home.model.bean.CatagoryBean;
 import com.bw.my_jingdong.mvp.home.model.bean.HomeBean;
 import com.bw.my_jingdong.mvp.home.model.bean.ProductDetailsBean;
+import com.bw.my_jingdong.mvp.home.model.bean.SpikBean;
 import com.bw.my_jingdong.mvp.home.view.view.HomeView;
 
 import io.reactivex.Observer;
@@ -153,4 +155,65 @@ public class HomePresenter extends BasePresenter<HomeView> {
                 });
     }
 
+    public void getSpik(int pid) {
+        homeModel.doSpik(pid)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<SpikBean>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        compositeDisposable.add(d);
+                    }
+
+                    @Override
+                    public void onNext(SpikBean spikBean) {
+                        if (view != null) {
+                            view.onSpikSuccess(spikBean);
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        if (view != null) {
+                            view.onSpikFaild(e.toString());
+                        }
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+
+    public void getBuy(int uid, float price) {
+        homeModel.doBuy(uid, price)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<CreateOrderBean>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        compositeDisposable.add(d);
+                    }
+
+                    @Override
+                    public void onNext(CreateOrderBean createOrderBean) {
+                        if (view != null) {
+                            view.onBuySuccess(createOrderBean);
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        if (view != null) {
+                            view.onBuyFaild(e.toString());
+                        }
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
 }

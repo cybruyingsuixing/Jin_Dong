@@ -3,6 +3,7 @@ package com.bw.my_jingdong.mvp.classes.view.adapter;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -15,9 +16,9 @@ import java.util.List;
 
 public class MyRightSmallAdapter extends RecyclerView.Adapter {
 
-    private List<ClassesBeanRight.DataBean> list;
+    private List<ClassesBeanRight.DataBean.ListBean> list;
 
-    public MyRightSmallAdapter(List<ClassesBeanRight.DataBean> list) {
+    public MyRightSmallAdapter(List<ClassesBeanRight.DataBean.ListBean> list) {
         this.list = list;
     }
 
@@ -29,11 +30,21 @@ public class MyRightSmallAdapter extends RecyclerView.Adapter {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        ((MySmallHolder) holder).tv_name.setText(list.get(position).getList().get(position).getName());
-        String pic = list.get(position).getList().get(position).getIcon();
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, final int position) {
+
+        //Log.d("tag", "onBindViewHolder:88888888888888 "+list.get(position).getList().get(position).getName());
+        ((MySmallHolder) holder).tv_name.setText(list.get(position).getName());
+        String pic = list.get(position).getIcon();
         Uri uri = Uri.parse(pic);
         ((MySmallHolder) holder).small_img.setImageURI(uri);
+        ((MySmallHolder) holder).itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (onClickListener != null) {
+                    onClickListener.onClick(v, position);
+                }
+            }
+        });
     }
 
     @Override
@@ -53,4 +64,13 @@ public class MyRightSmallAdapter extends RecyclerView.Adapter {
         }
     }
 
+    onClickListener onClickListener;
+
+    public void setOnClickListener(MyRightSmallAdapter.onClickListener onClickListener) {
+        this.onClickListener = onClickListener;
+    }
+
+    public interface onClickListener {
+        void onClick(View v, int position);
+    }
 }

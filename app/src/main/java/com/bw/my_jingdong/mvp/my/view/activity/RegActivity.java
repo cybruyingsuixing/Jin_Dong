@@ -73,8 +73,9 @@ public class RegActivity extends BaseActivity<MyLoginPresenter> implements MyLog
             @Override
             public void run() {
                 Toast.makeText(RegActivity.this, "注册成功" , Toast.LENGTH_SHORT).show();
-                Intent it = new Intent(RegActivity.this, LoginActivity.class);
-                startActivity(it);
+               // Intent it = new Intent(RegActivity.this, LoginActivity.class);
+                //startActivity(it);
+                finish();
             }
         });
     }

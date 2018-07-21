@@ -1,7 +1,6 @@
-package com.bw.my_jingdong.mvp.my.model;
+package com.bw.my_jingdong.mvp.my.model.mymodel;
 
-import android.util.Log;
-
+import com.bw.my_jingdong.mvp.my.model.api.IMyApi;
 import com.bw.my_jingdong.mvp.my.model.bean.LoginBean;
 import com.bw.my_jingdong.mvp.my.model.bean.RegBean;
 import com.bw.my_jingdong.utils.RetrofitManager;
@@ -19,4 +18,6 @@ public class MyLoginModel {
 
         return RetrofitManager.getDefault().create(IMyApi.class).doReg(mobile,password);
     }
+
+
 }

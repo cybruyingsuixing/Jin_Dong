@@ -106,8 +106,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
-                            android:background="#ff89ff"
-                            android:text="----为你推介----"
+                            android:text="--------------------------为你推介-----------------------"
                             android:textSize="28dp" />
 
                         <com.sunfusheng.marqueeview.MarqueeView

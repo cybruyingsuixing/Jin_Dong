@@ -39,14 +39,26 @@
 
         </LinearLayout>
 
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    >
 
 <com.bw.my_jingdong.mvp.cart.view.activity.MyAddSub
     android:id="@+id/my_sub_add"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="15dp">
-
+    >
 </com.bw.my_jingdong.mvp.cart.view.activity.MyAddSub>
 
+
+    <Button
+        android:id="@+id/cart_child_remove"
+        android:layout_width="70dp"
+        android:layout_height="50dp"
+        android:text="删除"
+        />
+</LinearLayout>
     </LinearLayout>
 </LinearLayout>

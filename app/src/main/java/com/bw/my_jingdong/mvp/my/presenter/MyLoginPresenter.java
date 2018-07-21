@@ -1,10 +1,9 @@
 package com.bw.my_jingdong.mvp.my.presenter;
 
 import android.util.Log;
-import android.widget.Toast;
 
 import com.bw.my_jingdong.base.BasePresenter;
-import com.bw.my_jingdong.mvp.my.model.MyLoginModel;
+import com.bw.my_jingdong.mvp.my.model.mymodel.MyLoginModel;
 import com.bw.my_jingdong.mvp.my.model.bean.LoginBean;
 import com.bw.my_jingdong.mvp.my.model.bean.RegBean;
 import com.bw.my_jingdong.mvp.my.view.view.MyLoginView;

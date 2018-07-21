@@ -53,6 +53,16 @@
                 />
 
             <RadioButton
+                android:id="@+id/show_find"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:button="@null"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:background="@drawable/find_selector"
+                />
+
+            <RadioButton
                 android:id="@+id/show_cart"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
