@@ -1,9 +1,9 @@
 package com.bw.my_jingdong.mvp.cart.view.view;
 
-import com.bw.my_jingdong.base.IView;
-import com.bw.my_jingdong.mvp.cart.model.bean.CartBean;
-import com.bw.my_jingdong.mvp.cart.model.bean.CartRemoveBean;
-import com.bw.my_jingdong.mvp.cart.model.bean.CreateOrderBean;
+        import com.bw.my_jingdong.base.IView;
+        import com.bw.my_jingdong.mvp.cart.model.bean.CartBean;
+        import com.bw.my_jingdong.mvp.cart.model.bean.CartRemoveBean;
+        import com.bw.my_jingdong.mvp.cart.model.bean.CreateOrderBean;
 
 public interface CartView extends IView {
 

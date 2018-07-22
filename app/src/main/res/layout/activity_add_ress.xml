@@ -7,32 +7,39 @@
     android:orientation="vertical"
     tools:context=".mvp.cart.view.activity.AddRessActivity">
 
-    <LinearLayout
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:background="#ccff"
+        android:textColor="#00f"
+        android:gravity="center"
+        android:textSize="30sp"
+        android:padding="10dp"
+        android:text="收货地址管理"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#ff33"/>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/add_address_recyler"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#ccc"
         >
-
- <android.support.v7.widget.RecyclerView
-     android:id="@+id/add_address_recyler"
-     android:layout_width="match_parent"
-     android:layout_height="match_parent">
- </android.support.v7.widget.RecyclerView>
-
-    </LinearLayout>
-
+    </android.support.v7.widget.RecyclerView>
 
     <Button
         android:id="@+id/add_shop_address"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="添加收货地址"
-        android:layout_marginTop="30dp"
-        android:background="#ff6622"
-        android:textSize="20dp"
+        android:padding="10dp"
+        android:textSize="25sp"
+        android:gravity="center"
+        android:background="#fff6"
+        android:textColor="#f33"
+        android:text="+新增地址"
         />
-
-
 
 </LinearLayout>

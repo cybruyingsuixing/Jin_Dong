@@ -257,16 +257,9 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeVie
         myCagtCoryAdapter.setOnClickListener(new MyCagtCoryAdapter.onClickListener() {
             @Override
             public void onClick( int position) {
-
-                /*SharedPreferences goods = getActivity().getSharedPreferences("gs", Context.MODE_PRIVATE);
-                SharedPreferences.Editor edit = goods.edit();
-                edit.putInt("cid", position);
-                edit.commit();*/
                 ViewPager viewPager=getActivity().findViewById(R.id.show_viewpager);
                 viewPager.setCurrentItem(1);
-                //Toast.makeText(getActivity(),"---",Toast.LENGTH_SHORT).show();
 
-                //EventBus.getDefault().post(position);
             }
         });
     }

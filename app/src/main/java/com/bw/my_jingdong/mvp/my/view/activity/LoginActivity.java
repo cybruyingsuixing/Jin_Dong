@@ -28,6 +28,7 @@ public class LoginActivity extends BaseActivity<MyLoginPresenter> implements MyL
     private Button btn_login;
     private TextView tv_reg;
     private static final String TAG = "LoginActivity";
+    private String p;
 
     @Override
     protected void initListener() {
@@ -40,7 +41,7 @@ public class LoginActivity extends BaseActivity<MyLoginPresenter> implements MyL
             @Override
             public void onClick(View v) {
                 String m = login_mobile.getText().toString();
-                String p = login_password.getText().toString();
+                p = login_password.getText().toString();
                 presenter.Login(m, p);
 
             }
@@ -87,8 +88,8 @@ public class LoginActivity extends BaseActivity<MyLoginPresenter> implements MyL
                 String icon1 = data.getIcon();
                 int uid = data.getUid();
                 Log.e("密码和头像", "eee" + mobile1 + icon1);
-                SharedPreferences p = LoginActivity.this.getSharedPreferences("mobile", MODE_PRIVATE);
-                SharedPreferences.Editor edit = p.edit();
+                SharedPreferences pw = LoginActivity.this.getSharedPreferences("mobile", MODE_PRIVATE);
+                SharedPreferences.Editor edit = pw.edit();
                 edit.putString("name", mobile1);
                 edit.putString("icon", icon1);
                 edit.putBoolean("flag", true);

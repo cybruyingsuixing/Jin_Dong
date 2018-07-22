@@ -108,6 +108,8 @@ public class MyCenterActivity extends BaseActivity<MyCenterPresenter> implements
                 Toast.makeText(MyCenterActivity.this, "ooooo", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.my_center_back:
+                Intent i = new Intent();
+                setResult(100, i);
                 finish();
                 break;
 

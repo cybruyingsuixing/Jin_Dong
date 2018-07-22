@@ -49,7 +49,7 @@ public class FindFragment extends BaseFragment<NewsPresenter> implements NewsVie
     @Override
     protected void initData() {
 
-        //presenter.getNews(HttpConfig.JD_FIND);
+        presenter.getNews(HttpConfig.JD_FIND);
     }
 
     @Override

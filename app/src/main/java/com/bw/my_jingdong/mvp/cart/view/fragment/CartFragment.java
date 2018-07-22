@@ -50,6 +50,7 @@ public class CartFragment extends BaseFragment<CartPresenter> implements CartVie
 
     @Override
     protected void initData() {
+        //和登录绑定
         SharedPreferences p = getContext().getSharedPreferences("mobile", MODE_PRIVATE);
         boolean flag = p.getBoolean("flag", false);
         uid = p.getInt("uid", 0);
@@ -174,12 +175,12 @@ public class CartFragment extends BaseFragment<CartPresenter> implements CartVie
 
     }
 
+    //点击创建订单
     @Override
     public void onCreateOderSuccess(CreateOrderBean createOrderBean) {
 
         String code = createOrderBean.getCode();
         if ("0".equals(code)){
-
             Intent it = new Intent(getContext(), QueryOrderActivity.class);
             startActivity(it);
             Toast.makeText(getContext(), "订单创建成功", Toast.LENGTH_SHORT).show();

@@ -8,10 +8,10 @@ import com.bw.my_jingdong.mvp.my.model.bean.UserInforMationBean;
 
 public interface MyCenterView extends IView{
 
-    void  onNameSuccess(UpdateNameBean updateNameBean);
+    void onNameSuccess(UpdateNameBean updateNameBean);
     void onNameFaild(String error);
 
-    void  onAvatorSuccess(UpdateAvatorBean updateAvatorBean);
+    void onAvatorSuccess(UpdateAvatorBean updateAvatorBean);
     void onAvatorFaild(String error);
 
     void onUserInforSuccess(UserInforMationBean userInforMationBean);

@@ -6,6 +6,21 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".mvp.cart.view.activity.QueryOrderActivity">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ccff"
+        android:gravity="center"
+        android:padding="10dp"
+        android:textSize="30sp"
+        android:textColor="#00f"
+        android:text="我的订单"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#ff3366"/>
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,7 +33,7 @@
             android:id="@+id/query_tv0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="未支付"
+            android:text="待支付"
             android:layout_weight="1"
             android:textSize="25dp"
             android:textColor="#fff"
@@ -81,7 +96,6 @@
         android:text="当前地址为："
         android:layout_gravity="center_horizontal"
         android:textSize="20dp"
-        android:layout_marginTop="200sp"
         />
 
     </LinearLayout>

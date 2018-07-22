@@ -38,7 +38,7 @@ public class MyQueryOrderAdapter extends RecyclerView.Adapter {
         ((MyHolder) holder).tv_time.setText(list.get(position).getCreatetime());
         int status = list.get(position).getStatus();
         if (status==0){
-            ((MyHolder)holder).btn.setText("未支付");
+            ((MyHolder)holder).btn.setText("待支付");
         }else if(status==1){
             ((MyHolder)holder).btn.setText("已支付");
             ((MyHolder)holder).btn.setTextColor(Color.WHITE);

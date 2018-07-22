@@ -11,16 +11,16 @@ public class HttpConfig {
     public static final String JD_HOME_SHOW = "product/getCatagory";
     //第一页面点击商品进入商品详情
     public static final String JD_PRODUCT_DETAILS="product/getProductDetail";
-    //第二页面的左边
+    //分类的左边
     public static final String JD_CLASSES_LEFT = "product/getCatagory";
-    //第二页面的右边
+    //分类的右边
     public static final String JD_CLASSES_RIGHT = "product/getProductCatagory";
     //搜索
     public static final String JD_SEARCH="product/searchProducts";
 
     //分类点击子条目进入详情
     public static final String JD_CLASSES_PRODUCT="product/getProducts";
-    //第三页面购物车
+    //查询购物车
     public static final String JD_SHOPPING_CART = "product/getCarts";
     //添加购物车
     public static final String JD_ADD_CART="product/addCart";

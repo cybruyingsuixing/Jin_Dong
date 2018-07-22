@@ -30,7 +30,7 @@ public class QueryOrderActivity extends BaseActivity<QueryOrderPresenter> implem
 
     private RecyclerView recyclerView;
     private MyQueryOrderAdapter myQueryOrderAdapter;
-    private String[] arr = {"未支付", "已支付", "取消支付"};
+    private String[] arr = {"待支付", "已支付", "取消支付"};
     private TextView tv0;
     private TextView tv1;
     private TextView tv2;

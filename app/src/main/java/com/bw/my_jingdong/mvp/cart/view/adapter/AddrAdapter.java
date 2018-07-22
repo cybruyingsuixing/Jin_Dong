@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.bw.my_jingdong.R;
@@ -64,7 +65,7 @@ public class AddrAdapter extends RecyclerView.Adapter {
         private final TextView tv_name;
         private final TextView tv_mobile;
         private final TextView tv_addr;
-        private final TextView tv_default;
+        private final RadioButton tv_default;
         private final TextView tv_update;
 
         public MyHolder(View itemView) {

@@ -57,6 +57,7 @@
         >
 
 <ImageView
+    android:id="@+id/my_fragment_wait_buy"
     android:layout_width="50dp"
     android:layout_height="50dp"
     android:src="@drawable/dfk"
@@ -101,8 +102,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="待付款"
-
+            android:text="待支付"
             />
         <TextView
             android:layout_width="wrap_content"
@@ -245,10 +245,17 @@
 
     </LinearLayout>
 
-<com.facebook.drawee.view.SimpleDraweeView
-    android:layout_width="match_parent"
-    android:layout_height="300dp"
-    android:src="@drawable/b5a"
-    />
+
+ <LinearLayout
+     android:layout_width="match_parent"
+     android:layout_height="match_parent">
+
+     <com.facebook.drawee.view.SimpleDraweeView
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:background="@drawable/b5a"
+         />
+ </LinearLayout>
+
 
 </LinearLayout>

@@ -56,40 +56,9 @@ public class ClassesFragment extends BaseFragment<ClassesPresenter> implements C
         btn_sao.setOnClickListener(this);
     }
 
-    /*@Override
-    public void onResume() {
-        super.onResume();
-        Log.i("zzz","onResume");
-       *//* SharedPreferences goods = getActivity().getSharedPreferences("gs", Context.MODE_PRIVATE);
-        SharedPreferences.Editor edit = goods.edit();
-        int cidd = goods.getInt("cid", -1);
-        Log.d("zzz", "onResume:***************** "+cidd);
-        if (cidd!=-1){
-            presenter.getLeftGoods();
-            presenter.getRightGoods(cidd);
-        }else {
-            edit.clear();
-            edit.commit();
-        }*//*
-    }*/
-   /* @Subscribe
-    public void getCid(int cid){
-        Log.i("xxx",cid+"-----");
-        presenter.getRightGoods(cid);
-    }*/
     @Override
     protected void initData() {
         presenter.getLeftGoods();
-       /* SharedPreferences goods = getActivity().getSharedPreferences("gs", Context.MODE_PRIVATE);
-        int mCid = goods.getInt("cid", -1);
-        if (mCid != -1) {
-            presenter.getRightGoods(mCid);
-            SharedPreferences.Editor edit = goods.edit();
-            edit.clear();
-            edit.commit();
-        }else {
-
-        }*/
         presenter.getRightGoods(1);
     }
 
